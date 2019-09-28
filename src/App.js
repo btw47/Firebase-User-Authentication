@@ -1,21 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-function Home() {
-  return <h2>Home</h2>;
-}
-
-function Login() {
-  return <h2>Login</h2>;
-}
-
-function Register() {
-  return <h2>Register</h2>
-}
-
-function Users() {
-  return <h2>Users</h2>;
-}
+import LoginComponent from "./components/Login";
+import RegisterComponent from "./components/Register";
+import UsersComponent from "./components/Users";
+import HomeComponent from "./components/Home";
 
 export default function App() {
   return (
@@ -42,16 +31,16 @@ export default function App() {
             renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/login">
-            <Login />
+            <LoginComponent />
           </Route>
           <Route path="/Register">
-            <Register />
+            <RegisterComponent />
           </Route>
           <Route path="/Users">
-            <Users />
+            <UsersComponent />
           </Route>
           <Route path="/">
-            <Home />
+            <HomeComponent />
           </Route>
         </Switch>
       </div>
