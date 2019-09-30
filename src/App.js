@@ -1,36 +1,19 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import HomeComponent from "./components/Home";
 import UsersComponent from "./components/Users";
 import LoginComponent from "./components/Login";
 import RegisterComponent from "./components/Register";
+import NavigationComponent from "./components/Navigation";
 
-const HOME_ROUTE = '/';
-const LOGIN_ROUTE = '/login';
-const REGISTER_ROUTE = '/register';
-const USERS_ROUTE = '/users';
+import { LOGIN_ROUTE, REGISTER_ROUTE, USERS_ROUTE, HOME_ROUTE } from "./constants/routes";
 
 export default function App() {
   return (
     <Router>
       <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to={HOME_ROUTE}>Home</Link>
-            </li>
-            <li>
-              <Link to={LOGIN_ROUTE}>Login</Link>
-            </li>
-            <li>
-              <Link to={REGISTER_ROUTE}>Register</Link>
-            </li>
-            <li>
-              <Link to={USERS_ROUTE}>Users</Link>
-            </li>
-          </ul>
-        </nav>
+        <NavigationComponent />
 
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
