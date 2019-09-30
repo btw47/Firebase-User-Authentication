@@ -1,5 +1,7 @@
 import React from "react";
 
+import { registerUser } from "../services/auth";
+
 export default class RegisterComponent extends React.Component {
     constructor(props) {
         super(props);
@@ -26,6 +28,8 @@ export default class RegisterComponent extends React.Component {
     handleSubmit(event) {
         console.log(this.state)
         event.preventDefault();
+
+        registerUser(this.state);
     }
 
     render() {

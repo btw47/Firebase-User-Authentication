@@ -1,5 +1,7 @@
 import React from "react";
 
+import { loginUser } from "../services/auth";
+
 export default class LoginComponent extends React.Component {
     constructor(props) {
         super(props);
@@ -24,6 +26,8 @@ export default class LoginComponent extends React.Component {
     handleSubmit(event) {
         console.log(this.state)
         event.preventDefault();
+
+        loginUser(this.state);
     }
 
     render() {
