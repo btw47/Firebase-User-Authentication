@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@google-cloud/firestore": "^2.4.0",
     "firebase": "^7.0.0",
+    "http2": "^3.3.7",
     "react": "^16.10.0",
     "react-dom": "^16.10.0",
     "react-router-dom": "^5.1.1",

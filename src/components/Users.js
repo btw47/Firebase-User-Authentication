@@ -1,5 +1,8 @@
 import React from "react";
 
+import { FIREBASE_USERS } from '../services/user.service';
+import { firebaseDb } from "../firebase/firebase.service";
+
 const USER_ROLES = [
     {
         id: 'admin',
@@ -20,47 +23,17 @@ export default class UsersComponent extends React.Component {
         super(props);
 
         this.state = {
-            users: [
-                {
-                    id: '1',
-                    name: 'Test Name 1',
-                    email: 'Test Email 1',
-                    role: USER_ROLES[0].id
-                },
-                {
-                    id: '2',
-                    name: 'Test Name 2',
-                    email: 'Test Email 2',
-                    role: USER_ROLES[1].id
-                },
-                {
-                    id: '3',
-                    name: 'Test Name 3',
-                    email: 'Test Email 3',
-                    role: USER_ROLES[2].id
-                }
-            ]
+            users: null
         }
     }
 
-    getUsers() {
-        if (!this.state.users || this.state.users.length === 0) return <h2>No users found.</h2>
-        return this.state.users.map(user => {
-            return (
-                <div key={user.id}>
-                    Name: <span>{user.name}</span> |
-                    Email: <span>{user.email}</span> |
-                    Role: {this.getRole(user)}
-
-                    <button onClick={e => this.updateUser(user, e)}>Update</button>
-                </div>
-            );
-        })
+    componentWillMount() {
+        this.renderUsers();
     }
 
     getRole(user) {
         return (
-            <select defaultValue={user.role} onChange={this.updateState}>
+            <select defaultValue={user.role} onChange={this.updateState} name={user.uid}>
                 {USER_ROLES.map(role => {
                     return <option value={role.id} key={role.id}>{role.label}</option>
                 })}
@@ -68,9 +41,19 @@ export default class UsersComponent extends React.Component {
         )
     }
 
-    updateState(e) {
-        console.log(e.target)
+    updateState = (e) => {
+        console.log(e.target.name)
         console.log(e.target.value)
+
+        const userId = e.target.name;
+        const newRole = e.target.value;
+
+        firebaseDb.ref(FIREBASE_USERS + userId).update({
+            role: newRole
+        }).then(res => {
+            console.log('upodated role!')
+            console.log(res)
+        })
     }
 
     updateUser(user, e) {
@@ -78,11 +61,43 @@ export default class UsersComponent extends React.Component {
         console.log(user)
     }
 
+    renderUsers() {
+        if (this.state.users) return;
+
+        firebaseDb.ref(FIREBASE_USERS).on('value', snapshot => {
+            console.log(snapshot.val())
+            const users = snapshot.val();
+            const userMarkup = [];
+            
+            for (let userId in users) {
+                const user = users[userId];
+                userMarkup.push(
+                    <div key={user.email}>
+                        Name: <span>{user.name}</span> |
+                        Email: <span>{user.email}</span> |
+                        Role: {this.getRole(user)}
+
+                        <button onClick={e => this.updateUser(user, e)}>Update</button>
+                    </div>
+                )
+            }
+            console.log('right before setting state')
+
+            this.setState({
+                ...this.state,
+                users: users,
+                userMarkup: userMarkup
+            });
+
+            console.log(this.state)
+        })
+    }
+
     render() {
         return (
             <div>
                 <h2>Users</h2>
-                <ul>{this.getUsers()}</ul>
+                <ul>{this.state.userMarkup}</ul>
             </div>    
         )
     }

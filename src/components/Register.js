@@ -1,6 +1,6 @@
 import React from "react";
 
-import { registerUser } from "../services/auth";
+import { registerUser } from "../services/user.service";
 
 export default class RegisterComponent extends React.Component {
     constructor(props) {

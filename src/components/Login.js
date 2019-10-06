@@ -1,6 +1,6 @@
 import React from "react";
 
-import { loginUser } from "../services/auth";
+import { loginUser } from "../services/user.service";
 
 export default class LoginComponent extends React.Component {
     constructor(props) {
@@ -23,7 +23,7 @@ export default class LoginComponent extends React.Component {
         });
     }
     
-    handleSubmit(event) {
+    async handleSubmit(event) {
         console.log(this.state)
         event.preventDefault();
 
