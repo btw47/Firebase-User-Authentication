@@ -1,5 +1,8 @@
 import { firebaseApp, firebaseDb } from "../firebase/firebase.service";
 
+//url routes
+import { HOME_ROUTE, LOGIN_ROUTE } from "../constants/routes";
+
 //node in Firebase DB for User information
 export const FIREBASE_USERS = 'users/';
 //default role for a new user
@@ -22,7 +25,7 @@ export const loginUser = credentials => {
             getUserById(userCredentials.user.uid);
 
             //navigate the user to the Home component
-            window.location.pathname = '/home';
+            window.location.pathname = HOME_ROUTE;
         })
         .catch(error => {
             /* ----- Handle any login errors here ----- */
@@ -60,7 +63,7 @@ export const registerUser = userInfo => {
             setUserInfo(currentUser.uid, userInfo);
 
             //navigate the user to the Home component
-            window.location.pathname = '/home';
+            window.location.pathname = HOME_ROUTE;
         })
         .catch(error => {
             // Handle Errors here
@@ -83,7 +86,7 @@ export const logoutUser = () => {
             console.log('user signed out')
 
             //navigate the user to the Login component
-            window.location.pathname = '/login';
+            window.location.pathname = LOGIN_ROUTE;
         })
         .catch(error => {
             console.log('an error occurred while logging user out')

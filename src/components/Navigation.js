@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+//url routes
 import { LOGIN_ROUTE, REGISTER_ROUTE, USERS_ROUTE, HOME_ROUTE } from "../constants/routes";
 
 import { FIREBASE_USERS } from "../services/user.service";
@@ -48,7 +49,7 @@ export default class NavigationComponent extends React.Component {
      */
     renderNavbar() {
         //if the current url is not "/login" ==> show the navbar
-        if (window.location.pathname !== '/login') {
+        if (window.location.pathname !== LOGIN_ROUTE) {
             return (
                 <nav>
                     <ul>
