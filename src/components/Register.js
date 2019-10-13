@@ -1,5 +1,6 @@
 import React from "react";
-
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 import { registerUser } from "../services/user.service";
 
 /**
@@ -57,25 +58,36 @@ export default class RegisterComponent extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <label>
-                    Name:
-                    <input type="text" value={this.state.name} onChange={this.handleChange} name="name" />
-                </label>
-                <label>
-                    Email:
-                    <input type="text" value={this.state.email} onChange={this.handleChange} name="email" />
-                </label>
-                <label>
-                    Password:
-                    <input type="password" value={this.state.password} onChange={this.handleChange} name="password" />
-                </label>
-                <label>
-                    Confirm Password:
-                    <input type="password" value={this.state.passwordConfirm} onChange={this.handleChange} name="passwordConfirm" />
-                </label>
-                <input type="submit" value="Submit" />
-            </form>
+            <div id="Register-page" className = 'Register-page'>
+            <br/>
+            <Form id="Register-Form" onSubmit={this.handleSubmit}>
+            <center>
+        <h2 id="login-H2">Register Form</h2>
+        </center>
+          <Form.Text id="Register-text" className="form-text">
+            We'll never share your email with anyone else.
+            </Form.Text>
+            <Form.Group controlId="formBasicName">  
+                    <Form.Control type="text" value={this.state.name} onChange={this.handleChange} name="name" />
+                    <Form.Label>Name:</Form.Label>
+                </Form.Group>
+                <Form.Group controlId="formBasicEmail">
+                    <Form.Control type="text" value={this.state.email} onChange={this.handleChange} name="email" />
+                    <Form.Label>Email:</Form.Label>
+                </Form.Group>
+                <Form.Group controlId="formBasicPassword">
+                    <Form.Control type="password" value={this.state.password} onChange={this.handleChange} name="password" />
+                    <Form.Label>Password:</Form.Label>
+                    </Form.Group>
+                    <Form.Group controlId="formBasicPassword">
+                    <Form.Control type="password" value={this.state.passwordConfirm} onChange={this.handleChange} name="passwordConfirm" />
+                    <Form.Label> Confirm Password:</Form.Label>
+                </Form.Group>
+                <Button type="submit" value="Submit" >
+                Submit
+                 </Button>
+            </Form>
+            </div>
         )
     }
 }

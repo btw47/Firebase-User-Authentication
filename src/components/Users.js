@@ -1,7 +1,7 @@
 import React from "react";
 
 import { firebaseDb } from "../firebase/firebase.service";
-
+import ListGroup from 'react-bootstrap/ListGroup';
 import { FIREBASE_USERS, updateUserInfo } from '../services/user.service';
 
 /**
@@ -111,10 +111,10 @@ export default class UsersComponent extends React.Component {
 
     render() {
         return (
-            <div>
+            <ListGroup as="ul" id="User-Info">
                 <h2>Users</h2>
-                <ul>{this.state.userMarkup}</ul>
-            </div>    
+                <ListGroup.Item as="li" active>{this.state.userMarkup}</ListGroup.Item>
+            </ListGroup >    
         )
     }
 }
