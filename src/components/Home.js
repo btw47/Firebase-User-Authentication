@@ -1,5 +1,5 @@
 import React from "react";
-
+import Button from 'react-bootstrap/Button';
 import { logoutUser } from "../services/user.service";
 
 /**
@@ -9,11 +9,12 @@ export default class HomeComponent extends React.Component {
     render() {
         return (
             <div>
+                <center>
                 <h2>
-                    Home
+                   Welcome To The Home Page
                 </h2>
-
-                <button onClick={() => logoutUser()}>logout</button>
+                </center>
+                <Button variant="outline-primary" onClick={() => logoutUser()}>logout</Button>
             </div>
         )
     }

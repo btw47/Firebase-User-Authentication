@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import Nav from 'react-bootstrap/Nav';
 //url routes
 import { LOGIN_ROUTE, REGISTER_ROUTE, USERS_ROUTE, HOME_ROUTE } from "../constants/routes";
 
@@ -51,25 +51,23 @@ export default class NavigationComponent extends React.Component {
         //if the current url is not "/login" ==> show the navbar
         if (window.location.pathname !== LOGIN_ROUTE) {
             return (
-                <nav>
-                    <ul>
-                        <li>
-                            <Link to={HOME_ROUTE}>Home</Link>
-                        </li>
-                        <li>
-                            <Link to={LOGIN_ROUTE}>Login</Link>
-                        </li>
-                        <li>
-                            <Link to={REGISTER_ROUTE}>Register</Link>
-                        </li>
+              <Nav id="Navbar">
+                      <Nav.Item>
+                       <Nav.Link to={HOME_ROUTE}><Link to={HOME_ROUTE}>Home</Link></Nav.Link>
+                      </Nav.Item>
+                        <Nav.Item>
+                        <Nav.Link ><Link to={LOGIN_ROUTE}>Login</Link></Nav.Link>
+                        </Nav.Item>
+                        <Nav.Item>
+                        <Nav.Link><Link to={REGISTER_ROUTE}>Register</Link></Nav.Link>
+                        </Nav.Item>
                         {/* <li>
                             <Link to={USERS_ROUTE}>Users</Link>
                         </li> */}
                         {
-                            this.state.currentUser && this.state.currentUser.role === 'admin' ? <li><Link to={USERS_ROUTE}>Users</Link></li> : <div></div>
+                            this.state.currentUser && this.state.currentUser.role === 'admin' ? <li><Nav.Link><Link to={USERS_ROUTE}>Users</Link></Nav.Link></li> : <div></div>
                         }
-                    </ul>
-                </nav>
+                    </Nav>
             );
         }
         //else if the current url is "/login" ==> do not show the navbar

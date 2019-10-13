@@ -2,7 +2,8 @@ import React from "react";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { loginUser } from "../services/user.service";
-import "../index.css"
+import { REGISTER_ROUTE} from "../constants/routes";
+import { Link } from "react-router-dom";
 
 /**
  * @description Component with input fields that allows a user to sign in. Will navigate user to the Home component if login was successful.
@@ -72,6 +73,9 @@ export default class LoginComponent extends React.Component {
                 <Button id="Submit-button" variant="primary" type="submit" value="Submit"> 
                  Submit
                  </Button>
+                 <br/>
+                 <p>If You Don't Have An Account Click Here To Sign Up </p>
+                 <Button variant="outline-success" id="Registration-Link"><Link id="Registration-button" to={REGISTER_ROUTE}>Register</Link></Button>
             </Form>
             </div>
         )

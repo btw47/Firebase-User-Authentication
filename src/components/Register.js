@@ -2,7 +2,8 @@ import React from "react";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { registerUser } from "../services/user.service";
-
+import { LOGIN_ROUTE} from "../constants/routes";
+import { Link } from "react-router-dom";
 /**
  * @description Component that allows users to register users in Firebase
  */
@@ -86,6 +87,7 @@ export default class RegisterComponent extends React.Component {
                 <Button type="submit" value="Submit" >
                 Submit
                  </Button>
+                 <Button variant="outline-success" id="Registration-Link"><Link id="Registration-button" to={LOGIN_ROUTE}>LOGIN Here</Link></Button>
             </Form>
             </div>
         )

@@ -111,10 +111,13 @@ export default class UsersComponent extends React.Component {
 
     render() {
         return (
+            <div className = 'Users-page'>
+                <br/>
             <ListGroup as="ul" id="User-Info">
-                <h2>Users</h2>
+                <h2>Users Data Info</h2>
                 <ListGroup.Item as="li" active>{this.state.userMarkup}</ListGroup.Item>
             </ListGroup >    
+            </div>
         )
     }
 }

@@ -14,6 +14,17 @@ code {
     monospace;
 }
 
+/* Navbar Styling */
+#Navbar{
+  font-size: 18px;
+  background-image: linear-gradient(260deg, #155f91 0%, #171718 100%);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding-bottom: 10px;
+}
+
+
+/*Login Page Styling */
+
 #Login-Form{
   background: url(./image/Login_Form.gif); 
   color: white;
@@ -27,20 +38,6 @@ code {
     background-size: cover
 
 }
-#Register-Form{
-  background: url(./image/registration_form.gif); 
-  color: white;
-  border: 1px solid #42464b;
-  border-radius: 6px;
-  width: 300px;
-    margin: 60px auto 30px;
-    padding: 10px;
-    position: relative;
-    background-repeat: no-repeat;
-    background-size: cover
-}
-
-
 
 #Input[type="password"], input[type="text"] {
   border: 1px solid #a1a3a3;
@@ -95,6 +92,28 @@ code {
   background-size: cover
 }
 
+#Registration-Link{
+  color: white;
+}
+#Registration-button{
+  color: white;
+}
+
+/* Register Page Styling */
+
+#Register-Form{
+  background: url(./image/registration_form.gif); 
+  color: white;
+  border: 1px solid #42464b;
+  border-radius: 6px;
+  width: 300px;
+    margin: 60px auto 30px;
+    padding: 10px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover
+}
+
 .Register-page{
   background: url(./image/registration_form-backgound.jpg); 
   height: 100vh;
@@ -102,6 +121,9 @@ code {
   background-repeat: no-repeat;
   background-size: cover
 }
+
+/* User Page Styling */
+
 #User-Info{
   background-color: #034753;
   color: white;
@@ -111,4 +133,11 @@ code {
   width: 700px;
     margin: 60px auto 30px;
     padding: 10px;
+}
+.Users-page{
+  background: url(./image/Users_Page_Background.jpg); 
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover
 }
