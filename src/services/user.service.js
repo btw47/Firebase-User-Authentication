@@ -1,5 +1,5 @@
 import { firebaseApp, firebaseDb } from "../firebase/firebase.service";
-
+import md5 from "md5";
 //url routes
 import { HOME_ROUTE, LOGIN_ROUTE } from "../constants/routes";
 
@@ -45,7 +45,28 @@ export const registerUser = userInfo => {
         .createUserWithEmailAndPassword(userInfo.email, userInfo.password)
         .then(newUserInfo => {
             //user registration was successful ==> add user information to Firebase DB
+            newUserInfo.user
+            .updateProfile({
+              displayName: userInfo.name,
+              photoURL: `http://gravatar.com/avatar/${md5(
+                userInfo.email
+              )}?d=identicon`
+            })
+            .then(() => {
+                firebaseApp
+                  .database()
+                  .ref("users")
+                  .child(newUserInfo.user.uid)
+                  .set({
+                    fullname: userInfo.fullname,
+                    avatar: newUserInfo.user.photoURL,
+                    is_online: true
+                  });
+              });
             console.log("Sign up success!")
+            .catch(error => {
+                console.log(error);
+              });
 
             //remove password information from the request body
             delete userInfo.password;

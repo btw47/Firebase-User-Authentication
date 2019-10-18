@@ -6,8 +6,9 @@ import UsersComponent from "./components/Users";
 import LoginComponent from "./components/Login";
 import RegisterComponent from "./components/Register";
 import NavigationComponent from "./components/Navigation";
+import AboutComponent from "./components/About";
 
-import { LOGIN_ROUTE, REGISTER_ROUTE, USERS_ROUTE, HOME_ROUTE } from "./constants/routes";
+import { LOGIN_ROUTE, REGISTER_ROUTE, USERS_ROUTE, HOME_ROUTE, ABOUT_ROUTE } from "./constants/routes";
 
 export default function App() {
   return (
@@ -23,6 +24,9 @@ export default function App() {
           </Route>
           <Route path={REGISTER_ROUTE}>
             <RegisterComponent />
+          </Route>
+          <Route path={ABOUT_ROUTE}>
+            <AboutComponent />
           </Route>
           <Route path={USERS_ROUTE}>
             <UsersComponent />

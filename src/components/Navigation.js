@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Nav from 'react-bootstrap/Nav';
 //url routes
-import { LOGIN_ROUTE, REGISTER_ROUTE, USERS_ROUTE, HOME_ROUTE } from "../constants/routes";
+import { LOGIN_ROUTE, USERS_ROUTE, HOME_ROUTE, ABOUT_ROUTE } from "../constants/routes";
 
 import { FIREBASE_USERS } from "../services/user.service";
 import { firebaseApp, firebaseDb } from "../firebase/firebase.service";
@@ -55,12 +55,12 @@ export default class NavigationComponent extends React.Component {
                       <Nav.Item>
                        <Nav.Link to={HOME_ROUTE}><Link to={HOME_ROUTE}>Home</Link></Nav.Link>
                       </Nav.Item>
-                        <Nav.Item>
+                      <Nav.Item>
+                        <Nav.Link><Link to={ABOUT_ROUTE}>About Us</Link></Nav.Link>
+                        </Nav.Item>
+                        {/* <Nav.Item>
                         <Nav.Link ><Link to={LOGIN_ROUTE}>Login</Link></Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item>
-                        <Nav.Link><Link to={REGISTER_ROUTE}>Register</Link></Nav.Link>
-                        </Nav.Item>
+                        </Nav.Item> */}
                         {/* <li>
                             <Link to={USERS_ROUTE}>Users</Link>
                         </li> */}
